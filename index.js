@@ -180,8 +180,15 @@ function lowerCaseStrings(strings) {
  * 
  * [2] Invoking `isItAnApple` with `['a', 'b', 'c' ]` will return `[ false, false, false ]`.
 */
-function isItAnApple(/* code here */) {
-  /* code here */
+function isItAnApple(strings) {
+  strings.forEach(e => {
+    if(e === 'apple') {
+      strings.splice(strings.indexOf(e), 1, true);
+    } else {
+      strings.splice(strings.indexOf(e), 1, false);
+    }
+  });
+  return strings;
 }
 
 /**
