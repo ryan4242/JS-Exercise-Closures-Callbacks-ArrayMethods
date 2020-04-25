@@ -135,7 +135,8 @@ function processProduct(num1, num2, callback) {
  * should return 3.
 */
 function processDuplicateFree(list, callback) {
-  
+  let filtered = list.filter((value, index) => list.indexOf(value) === index);
+  return callback(filtered);
 }
 
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
@@ -279,7 +280,7 @@ function firstNamesAllCaps(runners) {
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
 function getRunnersByTShirtSize(runners, tShirtSize) {
-  runnersShirt = runners.filter(runner => runner.shirt_size === tShirtSize);
+  let runnersShirt = runners.filter(runner => runner.shirt_size === tShirtSize);
   return runnersShirt;
 }
 
@@ -294,8 +295,7 @@ function getRunnersByTShirtSize(runners, tShirtSize) {
  * @param runners array of runners like the one inside the /data/runners.js file.
  * @returns a number which is the sum of the donations by all runners.
 */
-function tallyUpDonations(/* CODE HERE */) {
-  /* CODE HERE */
+function tallyUpDonations(runners) {
 }
 
 /////////////// CLOSURES ///////////////
@@ -308,11 +308,11 @@ function tallyUpDonations(/* CODE HERE */) {
  * Study the code for counter1 and counter2. Answer the questions below.
  * 
  * 1. What is the difference between counter1 and counter2?
- * 
+ *   counter1 is using closures. With counter2 you have count declared globally.
  * 2. Which of the two uses a closure? How can you tell?
- * 
+ *   counter1 because every variable is able to be wrapped within a function.
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
- *
+ *  counter1 is better in a very large file so you dont run into bugs having the global variable, and/or if you know you only need one counter in the file. Counter2 is better if the `count = 0` global variable could be used by more then just the counter2 function
 */
 
 // counter1 code
@@ -353,9 +353,20 @@ function counter2() {
  * counter() // should return 0
  * etc
 */
-function counterMakerWithLimit(/* CODE HERE */) {
-  /* CODE HERE */
+function counter() {
+  count++
 }
+
+function counterMakerWithLimit(max) {
+  if(count >= max) {
+    return count = 0;
+  } else {
+    return counter()
+  }
+}
+
+
+
 
 /////////////// END OF CHALLENGE ///////////////
 /////////////// END OF CHALLENGE ///////////////
