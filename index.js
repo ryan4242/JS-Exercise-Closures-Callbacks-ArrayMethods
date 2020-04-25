@@ -356,19 +356,18 @@ function counter2() {
  * counter() // should return 0
  * etc
 */
-function counter() {
-  count++
-}
+
 
 function counterMakerWithLimit(max) {
-  if(count >= max) {
-    return count = 0;
-  } else {
-    return counter()
+  let count = -1;
+  return function counter() {
+    if(count >= max) {
+      return count = 0;
+    } else {
+      return ++count;
+    }
   }
 }
-
-
 
 
 /////////////// END OF CHALLENGE ///////////////
